@@ -1,13 +1,17 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 
-# Use App Password (NOT normal Gmail password)
-EMAIL_USER = "kumarisweety.6747@gmail.com"
-EMAIL_PASS = "wquj gcxf oubm gobv"
+
+EMAIL_USER = os.environ.get("JOB_AGG_EMAIL")  # your sending email (Gmail recommended)
+EMAIL_PASS = os.environ.get("JOB_AGG_EMAIL_PASS")  # app password or SMTP password
 
 def send_email(recipient, subject, html_content):
     """Send HTML job alert email."""
