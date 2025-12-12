@@ -1,3 +1,7 @@
+# Use App Password (NOT normal Gmail password)
+EMAIL_USER = "kumarisweety.6747@gmail.com"
+EMAIL_PASS = "wquj gcxf oubm gobv"
+
 
 
 1. Activate your virtual environment(venv)
@@ -31,3 +35,11 @@ not in correct directory
 
 git commands
 
+
+echo "# Job_Alert_Phase1" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sweety-12/Job_Alert_Phase1.git
+git push -u origin main
