@@ -1,0 +1,33 @@
+
+
+1. Activate your virtual environment(venv)
+
+.\venv\Scripts\Activate.ps1
+
+2. Start your frontend services
+
+npm run dev    ----if you are not using venv then npm Start
+
+3. Start your backend services
+
+uvicorn --main:app --reload
+
+
+--------------------------------------
+
+step back cd..
+
+--------------------------------------
+
+_Phase2\backend\platforms> uvicorn main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\sweety\\Desktop\\New_Project\\Job_alerts_Phase2\\backend\\platforms']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1884] using StatReload
+ERROR:    Error loading ASGI app. Could not import module "main".
+INFO:     Stopping reloader process [1884]
+
+not in correct directory
+
+
+git commands
+
