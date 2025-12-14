@@ -4,3 +4,4 @@ pydantic[email]
 requests
 beautifulsoup4
 python-dotenv
+apscheduler
