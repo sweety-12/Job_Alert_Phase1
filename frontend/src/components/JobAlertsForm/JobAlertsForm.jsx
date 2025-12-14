@@ -25,7 +25,7 @@ const JobAlertsForm = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const API_URL = import.meta.env.REACT_APP_API_URL;
+  const API_URL = import.meta.env.BACKEND_API_KEY;
 
   const response = await fetch(`${API_URL}/save-preferences`, {
   method: "POST",
