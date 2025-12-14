@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from platforms.linkedin import search_linkedin
+# from platforms.linkedin import search_linkedin
 from platforms.linkedin_playwright import fetch_linkedin_jobs
 from models.preferences import JobPreferences
 from fastapi.middleware.cors import CORSMiddleware
