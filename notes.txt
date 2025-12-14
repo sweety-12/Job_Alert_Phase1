@@ -43,3 +43,15 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/sweety-12/Job_Alert_Phase1.git
 git push -u origin main
+
+
+
+CURRENT ARCHITECTURE
+
+User Preferences → SQLite
+        ↓
+FastAPI Endpoint (/send-daily-alerts)
+        ↓
+Job Aggregators (LinkedIn Guest API)
+        ↓
+Email Sender

@@ -59,6 +59,10 @@ def send_daily_alerts():
     print("=== Alerts Sent ===")
     return True
 
+# if __name__ == "__main__":
+#     send_daily_alerts()
+
+
 
 # # def load_preferences():
 # #     with open(PREF_DB, "r") as f:

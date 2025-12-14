@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Query
 # from platforms.linkedin import search_linkedin
 from platforms.linkedin_playwright import fetch_linkedin_jobs
 from models.preferences import JobPreferences
@@ -30,9 +30,19 @@ scheduler.start()
 def root():
     return {"message": "Job Alert Service Running"}
 
+# @app.get("/send-daily-alerts")
+# def trigger_alerts():
+#     """Manually trigger daily alerts (for testing)"""
+#     send_daily_alerts()
+#     return {"message": "Daily alerts sent successfully!"}
+
+SECRET_KEY = os.environ.get("CRON_SECRET")
+
 @app.get("/send-daily-alerts")
-def trigger_alerts():
-    """Manually trigger daily alerts (for testing)"""
+def send_daily_alerts_api(key: str = Query(None)):
+    if key != SECRET_KEY:
+        raise HTTPException(status_code=403, detail="Unauthorized")
+
     send_daily_alerts()
     return {"message": "Daily alerts sent successfully!"}
 
