@@ -25,16 +25,24 @@ const JobAlertsForm = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const API_URL = import.meta.env.BACKEND_API_KEY;
+  const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
-  const response = await fetch(`${API_URL}/save-preferences`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(formData),
-});
+  try {
+    const response = await fetch(`${API_URL}/save-preferences`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
+    const data = await response.json();
+    alert(data.message);
+  } catch (err) {
+    console.error(err);
+    alert("Failed to save preferences");
+  }
+};
 
   // const response = await fetch("http://localhost:8000/save-preferences", {
   //   method: "POST",
@@ -44,9 +52,7 @@ const JobAlertsForm = () => {
   //   body: JSON.stringify(formData),
   // });
 
-  const data = await response.json();
-  alert(data.message);
-  };
+ 
 
   return (
     <div>
