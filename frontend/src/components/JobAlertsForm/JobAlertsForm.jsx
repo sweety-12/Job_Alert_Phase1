@@ -25,13 +25,24 @@ const JobAlertsForm = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const response = await fetch("http://localhost:8000/save-preferences", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  });
+  const API_URL = import.meta.env.REACT_APP_API_URL;
+
+  const response = await fetch(`${API_URL}/save-preferences`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(formData),
+});
+
+
+  // const response = await fetch("http://localhost:8000/save-preferences", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(formData),
+  // });
 
   const data = await response.json();
   alert(data.message);
