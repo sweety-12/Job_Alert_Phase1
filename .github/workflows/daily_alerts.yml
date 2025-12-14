@@ -1,0 +1,17 @@
+name: Daily Job Alerts
+
+on:
+  schedule:
+    # Runs every day at 9:00 AM IST (3:30 UTC)
+    - cron: "30 3 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  trigger-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Render API
+        run: |
+          curl -X GET "${{ secrets.RENDER_ALERT_URL }}"
