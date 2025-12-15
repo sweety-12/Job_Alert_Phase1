@@ -162,8 +162,9 @@ const navigate = useNavigate();
          Send Alert
          </button>
         </div>
-
-         <div>
+        </form>
+        
+        <div>
           {/* Manage Preferences Button */}
           <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
             <button
@@ -179,7 +180,6 @@ const navigate = useNavigate();
           </div>
         </div>
 
-        </form>
       </div>
     </div>
   );
