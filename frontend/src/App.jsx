@@ -1,11 +1,25 @@
-import Home from "./Pages/home";
+// import Home from "./Pages/home";
+
+// function App() {
+//   return <Home />;
+// }
+
+// export default App;
+
+import { Routes, Route } from "react-router-dom";
+import JobAlertsForm from "./components/JobAlertsForm/JobAlertsForm";
+import SavedPreferences from "./components/SavedPreferences";
 
 function App() {
-  return <Home />;
+  return (
+    <Routes>
+      <Route path="/" element={<JobAlertsForm />} />
+      <Route path="/SavedPreferences" element={<SavedPreferences />} />
+    </Routes>
+  );
 }
 
 export default App;
-
 
 
 

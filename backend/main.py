@@ -4,6 +4,7 @@ from platforms.linkedin_playwright import fetch_linkedin_jobs
 from models.preferences import JobPreferences
 from fastapi.middleware.cors import CORSMiddleware
 from services.daily_alerts import send_daily_alerts
+from services.send_test_alert import send_test_alert
 from database.db import init_db, get_db_connection
 # from database import init_db, save_subscription
 # from pydantic import BaseModel
@@ -120,6 +121,41 @@ async def save_preferences(pref: JobPreferences):
 
     return {"message": "Preferences saved successfully!"}
 
+# from fastapi import Query
+
+@app.get("/get-preferences")
+def get_preferences(email: str = Query(...)):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM preferences WHERE email = ?",
+        (email,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+
+    if not rows:
+        return {"preferences": []}
+
+    return {"preferences": [dict(row) for row in rows]}
+
+@app.delete("/delete-preferences")
+def delete_preferences(email: str):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM preferences WHERE email = ?",
+        (email,)
+    )
+    conn.commit()
+    conn.close()
+
+    return {"message": "Preferences deleted successfully"}
+
+
+
 
 
 
@@ -135,6 +171,11 @@ def manual_send_daily_alerts():
 
     except Exception as e:
         return {"error": str(e)}
+    
+
+@app.post("/send-test-alert")
+def send_test_alert_api(email: str):
+    return send_test_alert(email)
 
 
 

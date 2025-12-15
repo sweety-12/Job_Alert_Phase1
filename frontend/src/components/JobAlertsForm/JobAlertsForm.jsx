@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const JobAlertsForm = () => {
   const [formData, setFormData] = useState({
@@ -43,6 +45,30 @@ const JobAlertsForm = () => {
     alert("Failed to save preferences");
   }
 };
+
+
+const handleTestAlert = async () => {
+  if (!formData.email) {
+    alert("Please enter your email first");
+    return;
+  }
+  try {
+    const response = await fetch(
+      `${import.meta.env.API_URL}/send-test-alert`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email }),
+      });
+      const data = await response.json();
+      alert(data.message);
+  } catch {
+    alert("Failed to send test alert");
+  }
+};
+
+const navigate = useNavigate();
+
 
   // const response = await fetch("http://localhost:8000/save-preferences", {
   //   method: "POST",
@@ -121,10 +147,37 @@ const JobAlertsForm = () => {
             onChange={handleChange}
           />
 
+          <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
           {/* Submit Button */}
           <button type="submit" className="form-btn">
             Save Preferences
           </button>
+
+          {/*Sent test Alert button */}
+          <button
+          type="button"
+          className="form-btn secondary"
+          onClick={handleTestAlert}
+          >
+         Send Alert
+         </button>
+        </div>
+
+         <div>
+          {/* Manage Preferences Button */}
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "10px" }}>
+            <button
+              className="form-btn secondary"
+              onClick={() => navigate("/preferences")}
+            >
+              Manage Preferences
+            </button>
+          </div>
+
+          <div className="form-card">
+            {/* existing form */}
+          </div>
+        </div>
 
         </form>
       </div>
