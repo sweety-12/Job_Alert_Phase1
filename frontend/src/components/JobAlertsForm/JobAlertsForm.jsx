@@ -57,7 +57,7 @@ const handleTestAlert = async () => {
   }
   try {
     const response = await fetch(
-      `${import.meta.env.API_URL}/send-test-alert`,
+      `${API_URL}/send-test-alert`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

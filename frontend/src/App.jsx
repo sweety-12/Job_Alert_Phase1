@@ -14,7 +14,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<JobAlertsForm />} />
-      <Route path="/Preferences" element={<SavedPreferences />} />
+      <Route path="/preferences" element={<SavedPreferences />} />
     </Routes>
   );
 }
