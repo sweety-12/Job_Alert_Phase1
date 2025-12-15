@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const API_URL = import.meta.env.VITE_BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 
 const SavedPreferences = () => {
   const [email, setEmail] = useState("");
