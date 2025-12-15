@@ -6,11 +6,30 @@ const SavedPreferences = () => {
   const [email, setEmail] = useState("");
   const [preferences, setPreferences] = useState([]);
 
+//   const fetchPreferences = async () => {
+//     const res = await fetch(`${API_URL}/get-preferences?email=${email}`);
+//     const data = await res.json();
+//     setPreferences(data.preferences);
+//   };
+
   const fetchPreferences = async () => {
-    const res = await fetch(`${API_URL}/get-preferences?email=${email}`);
-    const data = await res.json();
-    setPreferences(data.preferences);
-  };
+  if (!email) {
+    alert("Please enter email");
+    return;
+  }
+
+  const res = await fetch(`${API_URL}/get-preferences?email=${email}`);
+  const data = await res.json();
+
+  if (!data.preferences || data.preferences.length === 0) {
+    alert("No preferences found for this email");
+    setPreferences([]);
+    return;
+  }
+
+  setPreferences(data.preferences);
+};
+
 
   const deletePreferences = async () => {
     await fetch(`${API_URL}/delete-preferences?email=${email}`, {
