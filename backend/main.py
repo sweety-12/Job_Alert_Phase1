@@ -7,7 +7,7 @@ from services.daily_alerts import send_daily_alerts
 from services.send_test_alert import send_test_alert
 from database.db import init_db, get_db_connection
 # from database import init_db, save_subscription
-# from pydantic import BaseModel
+from pydantic import BaseModel
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 import json
@@ -31,11 +31,6 @@ scheduler.start()
 def root():
     return {"message": "Job Alert Service Running"}
 
-# @app.get("/send-daily-alerts")
-# def trigger_alerts():
-#     """Manually trigger daily alerts (for testing)"""
-#     send_daily_alerts()
-#     return {"message": "Daily alerts sent successfully!"}
 
 SECRET_KEY = os.environ.get("CRON_SECRET")
 
@@ -173,10 +168,17 @@ def manual_send_daily_alerts():
         return {"error": str(e)}
     
 
-@app.post("/send-test-alert")
-def send_test_alert_api(email: str):
-    return send_test_alert(email)
+# @app.post("/send-test-alert")
+# def send_test_alert_api(email: str):
+#     return send_test_alert(email)
 
+
+class TestAlertRequests(BaseModel):
+    email: str
+
+@app.post("/send-test-alert")
+def send_test_alert_api(data: TestAlertRequests):
+    return send_test_alert(data.email)
 
 
 # @app.post("/save-preferences")
