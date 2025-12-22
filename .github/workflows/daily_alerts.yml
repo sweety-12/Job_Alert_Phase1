@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Call Render API
+      - name: Call Render API (secured)
         run: |
-          curl -X GET "${{ secrets.RENDER_ALERT_URL }}"
+          curl -X GET "${{ secrets.RENDER_API_URL }}?key=${{ secrets.CRON_SECRET }}"
