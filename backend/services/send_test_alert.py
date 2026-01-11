@@ -2,7 +2,6 @@ from services.email_service import send_email
 from platforms.linkedin_playwright import fetch_linkedin_jobs
 from database.db import get_db_connection
 
-
 def send_test_alert(email: str):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -22,37 +21,33 @@ def send_test_alert(email: str):
             pref["job_role"],
             pref["location"]
         )
-        print("Sample job:", jobs[0] if jobs else "No jobs Found")
-        if jobs:
-            print("Job Keys:", jobs[0].keys())
 
-    job_html = ""
+        if not jobs:
+            continue
 
-    for job in jobs[:5]:  # limit for test email
-        apply_link = job.get("apply_link") or job.get("url")
+        job_html = ""
 
-        job_html += f"""
-        <div style="margin-bottom:15px;">
-            <p><b>{job.get('title', 'Unknown Role')}</b></p>
-            <p>{job.get('company', 'Unknown Company')}</p>
-            <p>{job.get('location', '')}</p>
-            {"<a href='" + apply_link + "'>Apply Now</a>" if apply_link else "<p>Apply link not available</p>"}
-            <hr />
-        </div>
-        """
+        for job in jobs[:5]:
+            apply_link = job.get("apply_link") or job.get("url")
+
+            job_html += f"""
+            <div style="margin-bottom:15px;">
+                <p><b>{job.get('title', 'Unknown Role')}</b></p>
+                <p>{job.get('company', 'Unknown Company')}</p>
+                <p>{job.get('location', '')}</p>
+                {"<a href='" + apply_link + "'>Apply Now</a>" if apply_link else "<p>Apply link not available</p>"}
+                <hr />
+            </div>
+            """
 
         html_content = f"""
         <h2>Test Job Alert</h2>
-
         <p><b>Role:</b> {pref['job_role']}</p>
         <p><b>Location:</b> {pref['location']}</p>
         <p><b>Experience:</b> {pref['experience']}</p>
-        <p><b>Mode:</b> {pref['mode'] or 'Any'}</p>
-
+        <p><b>Mode:</b> {pref['work_mode'] or 'Any'}</p>
         <hr />
-
         <p>Found <b>{len(jobs)}</b> jobs for you.</p>
-
         {job_html}
         """
 
@@ -63,6 +58,69 @@ def send_test_alert(email: str):
         )
 
     return {"message": "Test alerts sent successfully"}
+
+
+#Let's check if the updated above one is working or not , i ll uncomment them
+# def send_test_alert(email: str):
+#     conn = get_db_connection()
+#     cursor = conn.cursor()
+
+#     cursor.execute(
+#         "SELECT * FROM preferences WHERE email = ?",
+#         (email,)
+#     )
+#     preferences = cursor.fetchall()
+#     conn.close()
+
+#     if not preferences:
+#         return {"error": "No preferences found"}
+
+#     for pref in preferences:
+#         jobs = fetch_linkedin_jobs(
+#             pref["job_role"],
+#             pref["location"]
+#         )
+#         print("Sample job:", jobs[0] if jobs else "No jobs Found")
+#         if jobs:
+#             print("Job Keys:", jobs[0].keys())
+
+#     job_html = ""
+
+#     for job in jobs[:5]:  # limit for test email
+#         apply_link = job.get("apply_link") or job.get("url")
+
+#         job_html += f"""
+#         <div style="margin-bottom:15px;">
+#             <p><b>{job.get('title', 'Unknown Role')}</b></p>
+#             <p>{job.get('company', 'Unknown Company')}</p>
+#             <p>{job.get('location', '')}</p>
+#             {"<a href='" + apply_link + "'>Apply Now</a>" if apply_link else "<p>Apply link not available</p>"}
+#             <hr />
+#         </div>
+#         """
+
+#         html_content = f"""
+#         <h2>Test Job Alert</h2>
+
+#         <p><b>Role:</b> {pref['job_role']}</p>
+#         <p><b>Location:</b> {pref['location']}</p>
+#         <p><b>Experience:</b> {pref['experience']}</p>
+#         <p><b>Mode:</b> {pref['mode'] or 'Any'}</p>
+
+#         <hr />
+
+#         <p>Found <b>{len(jobs)}</b> jobs for you.</p>
+
+#         {job_html}
+#         """
+
+#         send_email(
+#             recipient=email,
+#             subject=f"Test Job Alert – {pref['job_role']}",
+#             html_content=html_content
+#         )
+
+#     return {"message": "Test alerts sent successfully"}
 
 
 
