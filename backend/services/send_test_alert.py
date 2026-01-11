@@ -2,6 +2,8 @@ from services.email_service import send_email
 from platforms.linkedin_playwright import fetch_linkedin_jobs
 from database.db import get_db_connection
 
+
+#working function
 def send_test_alert(email: str):
     conn = get_db_connection()
     cursor = conn.cursor()

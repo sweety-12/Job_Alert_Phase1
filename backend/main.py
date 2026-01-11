@@ -75,6 +75,7 @@ app.add_middleware(
         "https://job-alert-phase1-frontend.vercel.app",
         "http://localhost:5173",
         "http://localhost:3000",
+        "https://job-alert-phase1-frontend-qkfez7g70.vercel.app/",
     ],
     allow_credentials=True,
     allow_methods=["*"],
