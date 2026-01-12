@@ -59,28 +59,28 @@ def linkedin_route(query: str, location: str):
         return {"error": str(e)}
 
 
-# # CORS for frontend
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
-# Never use * with credentials
+# CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://job-alert-phase1-frontend.vercel.app",
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "https://job-alert-phase1-frontend-qkfez7g70.vercel.app/",
-    ],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# # Never use * with credentials
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "https://job-alert-phase1-frontend.vercel.app",
+#         "http://localhost:5173",
+#         "http://localhost:3000",
+#         "https://job-alert-phase1-frontend-qkfez7g70.vercel.app/",
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 # DB PATH
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
