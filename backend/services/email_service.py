@@ -11,7 +11,7 @@ def send_email(recipient, subject, html_content):
             "Content-Type": "application/json",
         },
         json={
-            "from": "Job Alerts <onboarding@resend.dev>",
+            "from": "Campus Inbox <alerts@send.campusinbox.org>",
             "to": [recipient],
             "subject": subject,
             "html": html_content,
