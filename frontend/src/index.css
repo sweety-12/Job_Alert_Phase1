@@ -1,25 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: global tweaks */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+/* 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color: #213547;
-  background: #eaf4ff; /* Soft blue background */
+  background: #eaf4ff; // Soft blue background 
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
+} */
+/* 
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
-  justify-content: center;   /* Center horizontally */
-  align-items: center;       /* Center vertically */
-}
-
+  justify-content: center;   // Center horizontally 
+  align-items: center;       // Center vertically 
+} */
+/* 
 a {
   font-weight: 500;
   color: #646cff;
@@ -32,12 +42,12 @@ a:hover {
 
 h1, h2 {
   text-align: center;
-}
+} */
 
 /* -------------------------- */
 /* FORM CARD STYLING          */
 /* -------------------------- */
-
+/* 
 .form-card {
   background: #ffffff;
   padding: 30px 35px;
@@ -47,7 +57,7 @@ h1, h2 {
   border: 1px solid #d8e6ff;
 }
 
-/* Input fields */
+// Input fields 
 .form-input,
 .form-select {
   width: 100%;
@@ -66,7 +76,7 @@ h1, h2 {
   box-shadow: 0 0 5px rgba(77, 141, 252, 0.4);
 }
 
-/* Labels */
+// Labels 
 .form-label {
   font-weight: 600;
   color: #23395b;
@@ -74,7 +84,7 @@ h1, h2 {
   display: block;
 }
 
-/* Submit button */
+//Submit button 
 .form-btn {
   width: 100%;
   padding: 14px;
@@ -114,6 +124,6 @@ h1, h2 {
   display: flex;
   gap: 12px;
   margin-top: 20px;
-}
+} */
 
 
