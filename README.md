@@ -53,7 +53,6 @@ graph LR
 
     GH[GitHub Actions<br/>Scheduler] -->|Daily Cron| BE
 
-## Application Flow
 
 sequenceDiagram
     participant U as User
