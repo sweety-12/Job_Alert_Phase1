@@ -1,11 +1,11 @@
-# 📬 CampusInbox – Daily Job Alerts System
+# CampusInbox – Daily Job Alerts System
 
 CampusInbox is a full-stack job alert platform that sends **personalized job notifications via email** based on user preferences.  
 Users can save job roles, locations, experience levels, and receive **test alerts instantly** and **daily automated alerts**.
 
 ---
 
-## 🚀 Features
+## Features
 
 - Save job preferences (role, location, experience, work mode)
 - Send **instant test job alert emails**
@@ -17,7 +17,7 @@ Users can save job roles, locations, experience levels, and receive **test alert
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 **Frontend**
 - React
@@ -52,7 +52,10 @@ graph LR
     BE -->|Send Emails| EM[Resend Email Service]
 
     GH[GitHub Actions<br/>Scheduler] -->|Daily Cron| BE
+```
+Application Flow
 
+```mermaid
 
 sequenceDiagram
     participant U as User
