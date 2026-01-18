@@ -15,10 +15,18 @@ import os
 
 app = FastAPI()
 
-#init DB when server starts
+# #init DB when server starts
+# @app.on_event("startup")
+# def startup_event():
+#     init_db()
+
+# Init DB when server starts
 @app.on_event("startup")
 def startup_event():
+    print("🚀 Starting Job Alert Service...")
     init_db()
+    print("✅ Database initialized")
+
 
 #scheduler setup
 scheduler = BackgroundScheduler()

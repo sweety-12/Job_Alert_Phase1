@@ -1,7 +1,40 @@
+# fastapi
+# uvicorn
+# pydantic[email]
+# requests
+# beautifulsoup4
+# python-dotenv
+# apscheduler
+
+
+# Web Framework
 fastapi
-uvicorn
-pydantic[email]
-requests
-beautifulsoup4
+uvicorn[standard]
+pydantic
+pydantic-settings
+
+# Database - ADD THESE TWO LINES
+psycopg2-binary==2.9.9
+SQLAlchemy==2.0.23
+
+# Environment Variables
 python-dotenv
+
+# Email - Resend API
+requests
+
+# Web Scraping
+beautifulsoup4
+lxml
+
+# HTTP Requests
+requests
+
+# CORS
+python-multipart
+
+# Scheduling
 apscheduler
+
+# Email validation
+email-validator
