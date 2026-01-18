@@ -15,7 +15,7 @@ pydantic-settings
 
 # Database - ADD THESE TWO LINES
 psycopg2-binary==2.9.9
-SQLAlchemy==2.0.23
+SQLAlchemy==2.0.36
 
 # Environment Variables
 python-dotenv
