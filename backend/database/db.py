@@ -57,7 +57,7 @@ class Preferences(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     job_role = Column(Text, nullable=False)
     location = Column(Text, nullable=False)
-    experience = Column(Integer, nullable=True)
+    experience = Column(Text, nullable=True)
     work_mode = Column(Text, nullable=True)
     email = Column(Text, nullable=False)
 
